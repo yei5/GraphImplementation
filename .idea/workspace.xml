@@ -4,32 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4169fd33-a1ef-4eed-b22f-0cdeed3bca1f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Graph.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exception/EdgeNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exception/ExistenceVertexException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exception/LoopNotAllowedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exception/MultipleEdgesNotAllowedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exception/VertexNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/AdjacentListGraph.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/AdjacentListVertex.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/AdjacentMatrixGraph.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/City.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/GenericMatrix.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/IGraph.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Pair.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Vertex.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/model/AdjacentListGraphTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/model/AdjacentMatrixGraphTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="4169fd33-a1ef-4eed-b22f-0cdeed3bca1f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -95,7 +70,7 @@
       <workItem from="1684848626625" duration="1091000" />
       <workItem from="1684850093529" duration="3797000" />
       <workItem from="1684859224532" duration="681000" />
-      <workItem from="1684860864671" duration="3806000" />
+      <workItem from="1684860864671" duration="4428000" />
     </task>
     <servers />
   </component>
