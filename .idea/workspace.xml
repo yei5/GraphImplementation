@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4169fd33-a1ef-4eed-b22f-0cdeed3bca1f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Graph.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exception/EdgeNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exception/ExistenceVertexException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exception/LoopNotAllowedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exception/MultipleEdgesNotAllowedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exception/VertexNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/AdjacentListGraph.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/AdjacentListVertex.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/AdjacentMatrixGraph.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/City.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/GenericMatrix.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/IGraph.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Pair.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Vertex.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/model/AdjacentListGraphTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/model/AdjacentMatrixGraphTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2PkxQOwXtsipwbZEqkMIFCZ3TdT" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/yeison rodriguez/Desktop/Tank-Battle&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4169fd33-a1ef-4eed-b22f-0cdeed3bca1f" name="Changes" comment="" />
+      <created>1684014867878</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1684014867878</updated>
+      <workItem from="1684014869179" duration="7059000" />
+      <workItem from="1684185981995" duration="2758000" />
+      <workItem from="1684256061551" duration="2166000" />
+      <workItem from="1684283385099" duration="693000" />
+      <workItem from="1684420129564" duration="3965000" />
+      <workItem from="1684500825477" duration="29057000" />
+      <workItem from="1684581196594" duration="1774000" />
+      <workItem from="1684594621409" duration="3352000" />
+      <workItem from="1684763877793" duration="28901000" />
+      <workItem from="1684848626625" duration="1091000" />
+      <workItem from="1684850093529" duration="3797000" />
+      <workItem from="1684859224532" duration="681000" />
+      <workItem from="1684860864671" duration="3806000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
