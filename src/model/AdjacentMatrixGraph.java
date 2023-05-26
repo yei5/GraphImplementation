@@ -8,7 +8,7 @@ import java.util.*;
 
 public class AdjacentMatrixGraph<V> implements IGraph<V> {
     private GenericMatrix<Integer> adjacentMatrix;
-    private GenericMatrix<Integer> weightMatrix;
+    private GenericMatrix<ArrayList<Integer>> weightMatrix;
     private ArrayList<Vertex<V>> vertex;
     private LinkedHashMap<V, Integer> index;
     private boolean isDirected;
@@ -70,17 +70,40 @@ public class AdjacentMatrixGraph<V> implements IGraph<V> {
     public void addEdge(V source, V destination, int weight) throws Exception {
         int sourceIndex = getIndex(source);
         int destinationIndex = getIndex(destination);
-        if (sourceIndex == -1 || destinationIndex == -1) throw new VertexNotFoundException("Vertex not found");
-        if (adjacentMatrix.get(sourceIndex, destinationIndex) != null && !multipleEdges)
+        if (sourceIndex == -1 || destinationIndex == -1)
+            throw new VertexNotFoundException("Vertex not found");
+
+        if (!multipleEdges && adjacentMatrix.get(sourceIndex, destinationIndex) != null)
             throw new MultipleEdgesNotAllowedException("Multiple edges not allowed");
-        if (sourceIndex == destinationIndex && !loops) throw new LoopNotAllowedException("Loops not allowed");
-        adjacentMatrix.set(sourceIndex, destinationIndex, 1);
-        weightMatrix.set(sourceIndex, destinationIndex, weight);
+
+        if (!loops && sourceIndex == destinationIndex)
+            throw new LoopNotAllowedException("Loops not allowed");
+
+        if (adjacentMatrix.get(sourceIndex, destinationIndex) != null) {
+            Integer value = adjacentMatrix.get(sourceIndex, destinationIndex) + 1;
+            adjacentMatrix.set(sourceIndex, destinationIndex, value);
+            weightMatrix.get(sourceIndex, destinationIndex).add(weight);
+        } else {
+            adjacentMatrix.set(sourceIndex, destinationIndex, 1);
+            ArrayList<Integer> list = new ArrayList<>();
+            list.add(weight);
+            weightMatrix.set(sourceIndex, destinationIndex, list);
+        }
+
         if (!isDirected) {
-            adjacentMatrix.set(destinationIndex, sourceIndex, 1);
-            weightMatrix.set(destinationIndex, sourceIndex, weight);
+            if (adjacentMatrix.get(destinationIndex, sourceIndex) != null) {
+                Integer value = adjacentMatrix.get(destinationIndex, sourceIndex) + 1;
+                adjacentMatrix.set(destinationIndex, sourceIndex, value);
+                weightMatrix.get(destinationIndex, sourceIndex).add(weight);
+            } else {
+                adjacentMatrix.set(destinationIndex, sourceIndex, 1);
+                ArrayList<Integer> list = new ArrayList<>();
+                list.add(weight);
+                weightMatrix.set(destinationIndex, sourceIndex, list);
+            }
         }
     }
+
 
     @Override
     public void removeEdge(V source, V destination, int weight) throws VertexNotFoundException, EdgeNotFoundException {
@@ -181,7 +204,7 @@ public class AdjacentMatrixGraph<V> implements IGraph<V> {
             for (int i = 0; i < vertex.size(); i++) {
                 if (adjacentMatrix.get(uIndex, i) != null) {
                     Vertex<V> v = vertex.get(i);
-                    int weight = weightMatrix.get(uIndex, i);
+                    int weight = weightMatrix.get(uIndex, i).get(0);
                     if (distances.get(uIndex) + weight < distances.get(i)) {
                         distances.set(i, distances.get(uIndex) + weight);
                         previous.set(i, u);
@@ -210,7 +233,7 @@ public class AdjacentMatrixGraph<V> implements IGraph<V> {
         for (int i = 0; i < vertex.size(); i++) {
             for (int j = 0; j < vertex.size(); j++) {
                 if (adjacentMatrix.get(i, j) != null) {
-                    distances[i][j] = weightMatrix.get(i, j);
+                    distances[i][j] = weightMatrix.get(i, j).get(0);
                     parents.set(i, j, vertex.get(i).getValue());
                 }
             }
@@ -226,25 +249,66 @@ public class AdjacentMatrixGraph<V> implements IGraph<V> {
                 }
             }
         }
-
         return new Pair<>(distances, parents);
     }
 
     @Override
     public Pair<ArrayList<Vertex<V>>, ArrayList<Integer>> prim() {
-        return null;
+        ArrayList<Vertex<V>> previous = new ArrayList<>(Collections.nCopies(vertex.size(), null));
+        ArrayList<Integer> distances = new ArrayList<>(Collections.nCopies(vertex.size(), Integer.MAX_VALUE));
+        distances.set(0, 0);
+        PriorityQueue<Vertex<V>> queue = new PriorityQueue<>(Comparator.comparingInt(v -> distances.get(getIndex(v.getValue()))));
+        queue.addAll(vertex);
+        while (!queue.isEmpty()) {
+            Vertex<V> u = queue.poll();
+            int uIndex = getIndex(u.getValue());
+            for (int i = 0; i < vertex.size(); i++) {
+                if (adjacentMatrix.get(uIndex, i) != null) {
+                    Vertex<V> v = vertex.get(i);
+                    int weight = weightMatrix.get(uIndex, i).get(0);
+                    if (queue.contains(v) && weight < distances.get(i)) {
+                        distances.set(i, weight);
+                        previous.set(i, u);
+                        queue.remove(v);
+                        queue.add(v);
+                    }
+                }
+            }
+        }
+        return new Pair<>(previous, distances);
     }
 
     @Override
-    public ArrayList<Pair<Pair<AdjacentListVertex<V>,AdjacentListVertex<V>>,Integer>> kruskal() {
-        return null;
+    public ArrayList<Pair<Pair<Vertex<V>, Vertex<V>>, Integer>> kruskal() {
+        UnionFind unionFind = new UnionFind(vertex.size());
+        ArrayList<Pair<Pair<Vertex<V>, Vertex<V>>, Integer>> minimumSpanningTree = new ArrayList<>();
+        ArrayList<Pair<Pair<Vertex<V>, Vertex<V>>, Integer>> edges = new ArrayList<>();
+        for (Vertex<V> u : vertex) {
+            for (Vertex<V> v : vertex) {
+                if (adjacentMatrix.get(getIndex(u.getValue()), getIndex(v.getValue())) != null) {
+                    edges.add(new Pair<>(new Pair<>(u, v), weightMatrix.get(getIndex(u.getValue()), getIndex(v.getValue())).get(0)));
+                }
+            }
+        }
+        edges.sort(Comparator.comparingInt(Pair::getValue2));
+        for (Pair<Pair<Vertex<V>, Vertex<V>>, Integer> edge : edges) {
+            Vertex<V> u = edge.getValue1().getValue1();
+            Vertex<V> v = edge.getValue1().getValue2();
+            int uIndex = getIndex(u.getValue());
+            int vIndex = getIndex(v.getValue());
+            if (unionFind.find(uIndex) != unionFind.find(vIndex)) {
+                minimumSpanningTree.add(edge);
+                unionFind.union(uIndex, vIndex);
+            }
+        }
+        return minimumSpanningTree;
     }
 
     public GenericMatrix<Integer> getAdjacentMatrix() {
         return adjacentMatrix;
     }
 
-    public GenericMatrix<Integer> getWeightMatrix() {
+    public GenericMatrix<ArrayList<Integer>> getWeightMatrix() {
         return weightMatrix;
     }
 

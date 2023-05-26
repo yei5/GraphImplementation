@@ -4,6 +4,7 @@ import exception.*;
 import org.junit.Test;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
@@ -123,7 +124,9 @@ public class AdjacentMatrixGraphTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        assertEquals(1, (int) graph.getAdjacentMatrix().get(0, 1));
+        assertEquals(2, (int) graph.getAdjacentMatrix().get(0, 1));
+        assertEquals(2, (int) graph.getAdjacentMatrix().get(1, 0));
+        assertEquals(2, (int) graph.getAdjacentMatrix().get(0, 0));
         assertNull(graph.getAdjacentMatrix().get(1, 1));
     }
 
@@ -604,6 +607,73 @@ public class AdjacentMatrixGraphTest {
         assertEquals(c4,path.get(3,1));
         assertEquals(c4,path.get(3,2));
         assertEquals(c4,path.get(3,3));
+    }
+
+    @Test
+    public void testPrim(){
+        setUp1();
+        City c1 = new City("A");
+        City c2 = new City("B");
+        City c3 = new City("C");
+        City c4 = new City("D");
+        try{
+            graph.addVertex(c1);
+            graph.addVertex(c2);
+            graph.addVertex(c3);
+            graph.addVertex(c4);
+            graph.addEdge(c1, c2, 10);
+            graph.addEdge(c1, c3, 7);
+            graph.addEdge(c2, c3, 5);
+            graph.addEdge(c2, c4, 3);
+
+        }catch(Exception e){
+            fail();
+        }
+        Pair<ArrayList<Vertex<City>>, ArrayList<Integer>> mst = graph.prim();
+        assertEquals(4, graph.getVertex().size());
+        assertEquals(c1, mst.getValue1().get(2).getValue());
+        assertEquals(c3, mst.getValue1().get(1).getValue());
+        assertEquals(c2,mst.getValue1().get(3).getValue());
+        assertEquals(7,(int)mst.getValue2().get(2));
+        assertEquals(5,(int)mst.getValue2().get(1));
+        assertEquals(3,(int)mst.getValue2().get(3));
+    }
+
+    @Test
+    public void testKruskal(){
+        setUp1();
+        City c1 = new City("A");
+        City c2 = new City("B");
+        City c3 = new City("C");
+        City c4 = new City("D");
+        try{
+            graph.addVertex(c1);
+            graph.addVertex(c2);
+            graph.addVertex(c3);
+            graph.addVertex(c4);
+            graph.addEdge(c1, c2, 10);
+            graph.addEdge(c1, c3, 7);
+            graph.addEdge(c2, c3, 5);
+            graph.addEdge(c2, c4, 3);
+
+        }catch(Exception e){
+            fail();
+        }
+        ArrayList<Pair<Pair<Vertex<City>,Vertex<City>>,Integer>>mst = graph.kruskal();
+        assertEquals(4, graph.getVertex().size());
+        assertEquals(c2,mst.get(0).getValue1().getValue1().getValue());
+        assertEquals(c4,mst.get(0).getValue1().getValue2().getValue());
+        assertEquals(3,(int)mst.get(0).getValue2());
+        assertEquals(c2,mst.get(1).getValue1().getValue1().getValue());
+        assertEquals(c3,mst.get(1).getValue1().getValue2().getValue());
+        assertEquals(5,(int)mst.get(1).getValue2());
+        assertEquals(c1,mst.get(2).getValue1().getValue1().getValue());
+        assertEquals(c3,mst.get(2).getValue1().getValue2().getValue());
+        assertEquals(7,(int)mst.get(2).getValue2());
+        assertThrows(IndexOutOfBoundsException.class,()->{
+            mst.get(4);
+        });
+
     }
 
 }

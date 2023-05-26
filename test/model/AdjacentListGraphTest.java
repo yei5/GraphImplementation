@@ -657,7 +657,7 @@ public class AdjacentListGraphTest {
         }catch(Exception e){
             fail();
         }
-        ArrayList<Pair<Pair<AdjacentListVertex<City>,AdjacentListVertex<City>>,Integer>>mst = cities.kruskal();
+        ArrayList<Pair<Pair<Vertex<City>,Vertex<City>>,Integer>>mst = cities.kruskal();
         assertEquals(4, cities.getVertex().size());
         assertEquals(c2,mst.get(0).getValue1().getValue1().getValue());
         assertEquals(c4,mst.get(0).getValue1().getValue2().getValue());

@@ -9,8 +9,8 @@
       <change beforePath="$PROJECT_DIR$/src/model/AdjacentListGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AdjacentListGraph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/AdjacentMatrixGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AdjacentMatrixGraph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/IGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/UnionFind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UnionFind.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/model/AdjacentListGraphTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/AdjacentListGraphTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/AdjacentMatrixGraphTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/AdjacentMatrixGraphTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +59,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.AdjacentListGraphTest">
+  <component name="RunManager">
     <configuration name="AdjacentListGraphTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Graph" />
       <extension name="coverage">
@@ -125,7 +125,7 @@
       <workItem from="1684887851359" duration="824000" />
       <workItem from="1684929226949" duration="7503000" />
       <workItem from="1685024401244" duration="667000" />
-      <workItem from="1685032845444" duration="9147000" />
+      <workItem from="1685032845444" duration="12487000" />
     </task>
     <servers />
   </component>

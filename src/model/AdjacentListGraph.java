@@ -257,12 +257,10 @@ public class AdjacentListGraph<V> implements IGraph<V> {
     }
 
     @Override
-    public ArrayList<Pair<Pair<AdjacentListVertex<V>,AdjacentListVertex<V>>,Integer>> kruskal() {
+    public ArrayList<Pair<Pair<Vertex<V>, Vertex<V>>, Integer>> kruskal() {
         UnionFind unionFind = new UnionFind(vertex.size());
-        ArrayList<Pair<Pair<AdjacentListVertex<V>,AdjacentListVertex<V>>,Integer>> minimumSpanningTree = new ArrayList<>();
-
-        // Crear una lista de todas las aristas ordenadas por peso
-        ArrayList<Pair<Pair<AdjacentListVertex<V>,AdjacentListVertex<V>>,Integer>> edges = new ArrayList<>();
+        ArrayList<Pair<Pair<Vertex<V>, Vertex<V>>, Integer>> minimumSpanningTree = new ArrayList<>();
+        ArrayList<Pair<Pair<Vertex<V>, Vertex<V>>, Integer>> edges = new ArrayList<>();
         for (AdjacentListVertex<V> u : vertex) {
             for (Pair<AdjacentListVertex<V>, Integer> p : u.getAdjacentList()) {
                 AdjacentListVertex<V> v = p.getValue1();
@@ -271,26 +269,18 @@ public class AdjacentListGraph<V> implements IGraph<V> {
             }
         }
         edges.sort(Comparator.comparingInt(Pair::getValue2));
-
-        for (Pair<Pair<AdjacentListVertex<V>,AdjacentListVertex<V>>,Integer> edge : edges) {
-            AdjacentListVertex<V> u = edge.getValue1().getValue1();
-            AdjacentListVertex<V> v = edge.getValue1().getValue2();
-
+        for (Pair<Pair<Vertex<V>, Vertex<V>>, Integer> edge : edges) {
+            Vertex<V> u = edge.getValue1().getValue1();
+            Vertex<V> v = edge.getValue1().getValue2();
             int uIndex = getIndex(u.getValue());
             int vIndex = getIndex(v.getValue());
-
             if (unionFind.find(uIndex) != unionFind.find(vIndex)) {
-                // Agregar la arista al árbol de expansión mínima
                 minimumSpanningTree.add(edge);
-
-                // Realizar la unión de los conjuntos
                 unionFind.union(uIndex, vIndex);
             }
         }
-
         return minimumSpanningTree;
     }
-
 
     public ArrayList<AdjacentListVertex<V>> getVertex() {
         return vertex;
