@@ -257,26 +257,40 @@ public class AdjacentListGraph<V> implements IGraph<V> {
     }
 
     @Override
-    public ArrayList<Pair<AdjacentListVertex<V>, Integer>> kruskal() {
-        UnionFind a = new UnionFind(vertex.size());
-        ArrayList<Pair<AdjacentListVertex<V>, Integer>> edges = new ArrayList<>();
+    public ArrayList<Pair<Pair<AdjacentListVertex<V>,AdjacentListVertex<V>>,Integer>> kruskal() {
+        UnionFind unionFind = new UnionFind(vertex.size());
+        ArrayList<Pair<Pair<AdjacentListVertex<V>,AdjacentListVertex<V>>,Integer>> minimumSpanningTree = new ArrayList<>();
+
+        // Crear una lista de todas las aristas ordenadas por peso
+        ArrayList<Pair<Pair<AdjacentListVertex<V>,AdjacentListVertex<V>>,Integer>> edges = new ArrayList<>();
         for (AdjacentListVertex<V> u : vertex) {
             for (Pair<AdjacentListVertex<V>, Integer> p : u.getAdjacentList()) {
                 AdjacentListVertex<V> v = p.getValue1();
-                int distance = p.getValue2();
-                edges.add(new Pair<>(u, distance));
+                int weight = p.getValue2();
+                edges.add(new Pair<>(new Pair<>(u, v), weight));
             }
         }
         edges.sort(Comparator.comparingInt(Pair::getValue2));
-        for (Pair<AdjacentListVertex<V>, Integer> p : edges) {
-            AdjacentListVertex<V> u = p.getValue1();
-            AdjacentListVertex<V> v = p.getValue1();
-            if (a.find(getIndex(u.getValue())) != a.find(getIndex(v.getValue()))) {
-                a.union(getIndex(u.getValue()), getIndex(v.getValue()));
+
+        for (Pair<Pair<AdjacentListVertex<V>,AdjacentListVertex<V>>,Integer> edge : edges) {
+            AdjacentListVertex<V> u = edge.getValue1().getValue1();
+            AdjacentListVertex<V> v = edge.getValue1().getValue2();
+
+            int uIndex = getIndex(u.getValue());
+            int vIndex = getIndex(v.getValue());
+
+            if (unionFind.find(uIndex) != unionFind.find(vIndex)) {
+                // Agregar la arista al árbol de expansión mínima
+                minimumSpanningTree.add(edge);
+
+                // Realizar la unión de los conjuntos
+                unionFind.union(uIndex, vIndex);
             }
         }
-        return edges;
+
+        return minimumSpanningTree;
     }
+
 
     public ArrayList<AdjacentListVertex<V>> getVertex() {
         return vertex;

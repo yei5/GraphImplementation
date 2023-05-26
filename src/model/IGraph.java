@@ -27,6 +27,6 @@ public interface IGraph<V> {
 
     Pair<ArrayList<Vertex<V>>, ArrayList<Integer>> prim();
 
-    ArrayList<Pair<AdjacentListVertex<V>, Integer>> kruskal();
+    ArrayList<Pair<Pair<AdjacentListVertex<V>,AdjacentListVertex<V>>,Integer>> kruskal();
 
 }

@@ -236,7 +236,7 @@ public class AdjacentMatrixGraph<V> implements IGraph<V> {
     }
 
     @Override
-    public ArrayList<Pair<AdjacentListVertex<V>, Integer>> kruskal() {
+    public ArrayList<Pair<Pair<AdjacentListVertex<V>,AdjacentListVertex<V>>,Integer>> kruskal() {
         return null;
     }
 

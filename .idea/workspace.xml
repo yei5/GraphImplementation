@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4169fd33-a1ef-4eed-b22f-0cdeed3bca1f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/model/UnionFind.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/AdjacentListGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AdjacentListGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/AdjacentListVertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AdjacentListVertex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/AdjacentMatrixGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AdjacentMatrixGraph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/IGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Vertex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/UnionFind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UnionFind.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/model/AdjacentListGraphTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/AdjacentListGraphTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/model/AdjacentMatrixGraphTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/AdjacentMatrixGraphTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,27 +38,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/yeison rodriguez/Desktop/Tank-Battle&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/yeison rodriguez/Desktop/Tank-Battle",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager">
+}]]></component>
+  <component name="RunManager" selected="JUnit.AdjacentListGraphTest">
+    <configuration name="AdjacentListGraphTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Graph" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.AdjacentListGraphTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AdjacentListGraphTest.testPrim" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Graph" />
       <extension name="coverage">
@@ -80,6 +93,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AdjacentListGraphTest" />
         <item itemvalue="JUnit.AdjacentListGraphTest.testPrim" />
       </list>
     </recent_temporary>
@@ -111,7 +125,7 @@
       <workItem from="1684887851359" duration="824000" />
       <workItem from="1684929226949" duration="7503000" />
       <workItem from="1685024401244" duration="667000" />
-      <workItem from="1685032845444" duration="3217000" />
+      <workItem from="1685032845444" duration="9147000" />
     </task>
     <servers />
   </component>
