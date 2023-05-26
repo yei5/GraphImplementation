@@ -2,8 +2,8 @@ package model;
 
 import exception.*;
 import org.junit.Test;
-import java.awt.Color;
-import java.util.ArrayList;
+
+import java.awt.*;
 
 import static org.junit.Assert.*;
 
@@ -508,7 +508,6 @@ public class AdjacentListGraphTest {
     @Test
     public void testDFSParents() {
         setUp1();
-        //ciudades de europa
         City c1 = new City("London");
         City c2 = new City("Paris");
         City c3 = new City("Rome");
@@ -569,24 +568,65 @@ public class AdjacentListGraphTest {
         }catch(Exception e){
             fail();
         }
-
         Pair<int[][], GenericMatrix<City>> floyd = cities.floydWarshall();
-        int[][] matrix = floyd.getValue1();
+        int[][] distances = floyd.getValue1();
         GenericMatrix<City> path = floyd.getValue2();
-        for (int[] ints : matrix) {
-            for (int j = 0; j < matrix.length; j++) {
-                System.out.print(ints[j] + " ");
-            }
-            System.out.println();
-        }
-        for(ArrayList<City> a : path.getMatrix()){
-            for(City c : a){
-                System.out.print(c.getName() + " ");
-            }
-            System.out.println();
-        }
-
-
         assertEquals(4, cities.getVertex().size());
+        assertEquals(0,distances[0][0]);
+        assertEquals(1,distances[0][1]);
+        assertEquals(3,distances[0][2]);
+        assertEquals(3,distances[0][3]);
+        assertEquals(1,distances[1][0]);
+        assertEquals(0,distances[1][1]);
+        assertEquals(2,distances[1][2]);
+        assertEquals(2,distances[1][3]);
+        assertEquals(3,distances[2][0]);
+        assertEquals(2,distances[2][1]);
+        assertEquals(0,distances[2][2]);
+        assertEquals(1,distances[2][3]);
+        assertEquals(3,distances[3][0]);
+        assertEquals(2,distances[3][1]);
+        assertEquals(1,distances[3][2]);
+        assertEquals(0,distances[3][3]);
+        assertEquals(c1,path.get(0,0));
+        assertEquals(c1,path.get(0,1));
+        assertEquals(c2,path.get(0,2));
+        assertEquals(c2,path.get(0,3));
+        assertEquals(c2,path.get(1,0));
+        assertEquals(c2,path.get(1,1));
+        assertEquals(c2,path.get(1,2));
+        assertEquals(c2,path.get(1,3));
+        assertEquals(c2,path.get(2,0));
+        assertEquals(c3,path.get(2,1));
+        assertEquals(c3,path.get(2,2));
+        assertEquals(c3,path.get(2,3));
+        assertEquals(c2,path.get(3,0));
+        assertEquals(c4,path.get(3,1));
+        assertEquals(c4,path.get(3,2));
+        assertEquals(c4,path.get(3,3));
     }
+
+    @Test
+    public void testPrim(){
+        setUp1();
+        City c1 = new City("A");
+        City c2 = new City("B");
+        City c3 = new City("C");
+        City c4 = new City("D");
+        try{
+            cities.addVertex(c1);
+            cities.addVertex(c2);
+            cities.addVertex(c3);
+            cities.addVertex(c4);
+            cities.addEdge(c1, c2, 10);
+            cities.addEdge(c1, c3, 7);
+            cities.addEdge(c2, c3, 5);
+            cities.addEdge(c2, c4, 3);
+        }catch(Exception e){
+            fail();
+        }
+
+    }
+
+
 }

@@ -6,16 +6,27 @@ import exception.VertexNotFoundException;
 
 import java.util.ArrayList;
 
-public interface IGraph <V> {
-    void addVertex(V value ) throws ExistenceVertexException;
-    void deleteVertex (V value) throws VertexNotFoundException;
+public interface IGraph<V> {
+    void addVertex(V value) throws ExistenceVertexException;
+
+    void deleteVertex(V value) throws VertexNotFoundException;
+
     void addEdge(V source, V destination, int weight) throws Exception;
-    void removeEdge(V source, V destination,int weight) throws VertexNotFoundException, EdgeNotFoundException;
+
+    void removeEdge(V source, V destination, int weight) throws VertexNotFoundException, EdgeNotFoundException;
 
     void BFS(V value) throws VertexNotFoundException;
 
     void DFS();
-    void visit(Vertex<V> u);
-    Pair<ArrayList<AdjacentListVertex<V>>,ArrayList<Integer>> dijkstra(V source) throws VertexNotFoundException;
+
+    void DfsVisit(Vertex<V> u);
+
+    Pair<ArrayList<Vertex<V>>, ArrayList<Integer>> dijkstra(V source) throws VertexNotFoundException;
+
     Pair<int[][], GenericMatrix<V>> floydWarshall();
+
+    Pair<ArrayList<Vertex<V>>, ArrayList<Integer>> prim();
+
+    ArrayList<Pair<AdjacentListVertex<V>, Integer>> kruskal();
+
 }

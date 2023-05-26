@@ -3,9 +3,8 @@ package model;
 import exception.*;
 
 import java.awt.*;
+import java.util.Queue;
 import java.util.*;
-import java.util.List;
-
 public class AdjacentListGraph<V> implements IGraph<V> {
     private ArrayList<AdjacentListVertex<V>> vertex;
     private LinkedHashMap<V, Integer> index;
@@ -132,13 +131,13 @@ public class AdjacentListGraph<V> implements IGraph<V> {
         time = 0;
         for (AdjacentListVertex<V> u : vertex) {
             if (u.getColor() == Color.WHITE) {
-                visit(u);
+                DfsVisit(u);
             }
         }
     }
 
     @Override
-    public void visit(Vertex<V> u) {
+    public void DfsVisit(Vertex<V> u) {
         time += 1;
         AdjacentListVertex<V> u1 = (AdjacentListVertex<V>) u;
         u1.setDistance(time);
@@ -147,7 +146,7 @@ public class AdjacentListGraph<V> implements IGraph<V> {
             AdjacentListVertex<V> v = p.getValue1();
             if (v.getColor() == Color.WHITE) {
                 v.setParent(u1);
-                visit(v);
+                DfsVisit(v);
             }
         }
         u1.setColor(Color.BLACK);
@@ -156,14 +155,14 @@ public class AdjacentListGraph<V> implements IGraph<V> {
     }
 
     @Override
-    public Pair<ArrayList<AdjacentListVertex<V>>, ArrayList<Integer>> dijkstra(V source) throws VertexNotFoundException {
+    public Pair<ArrayList<Vertex<V>>, ArrayList<Integer>> dijkstra(V source) throws VertexNotFoundException {
         int index = getIndex(source);
         AdjacentListVertex<V> s = vertex.get(index);
         if (s == null) {
             throw new VertexNotFoundException("Vertex not found");
         }
 
-        ArrayList<AdjacentListVertex<V>> previous = new ArrayList<>(Collections.nCopies(vertex.size(), null));
+        ArrayList<Vertex<V>> previous = new ArrayList<>(Collections.nCopies(vertex.size(), null));
         ArrayList<Integer> distances = new ArrayList<>(Collections.nCopies(vertex.size(), Integer.MAX_VALUE));
         distances.set(getIndex(source), 0);
 
@@ -224,6 +223,59 @@ public class AdjacentListGraph<V> implements IGraph<V> {
             }
         }
         return new Pair<>(distances, parents);
+    }
+
+    @Override
+    public Pair<ArrayList<Vertex<V>>, ArrayList<Integer>> prim() {
+        for (AdjacentListVertex<V> v : vertex) {
+            v.setColor(Color.WHITE);
+        }
+        ArrayList<Vertex<V>> parents = new ArrayList<>(Collections.nCopies(vertex.size(), null));
+        ArrayList<Integer> distances = new ArrayList<>(Collections.nCopies(vertex.size(), Integer.MAX_VALUE));
+        AdjacentListVertex<V> r = vertex.get(0);
+        distances.set(0, 0);
+        parents.set(0, null);
+        PriorityQueue<AdjacentListVertex<V>> queue = new PriorityQueue<>(Comparator.comparingInt(v -> distances.get(getIndex(v.getValue()))));
+        queue.addAll(vertex);
+        while (!queue.isEmpty()) {
+            AdjacentListVertex<V> u = queue.poll();
+            for (Pair<AdjacentListVertex<V>, Integer> p : u.getAdjacentList()) {
+                AdjacentListVertex<V> v = p.getValue1();
+                int uIndex = getIndex(u.getValue());
+                int vIndex = getIndex(v.getValue());
+                int vDistance = distances.get(vIndex);
+                int distance = p.getValue2();
+                if (v.getColor() == Color.WHITE && distance < vDistance) {
+                    distances.set(vIndex, distance);
+                    parents.set(vIndex, u);
+                    queue.offer(v);
+                }
+            }
+            u.setColor(Color.BLACK);
+        }
+        return new Pair<>(parents, distances);
+    }
+
+    @Override
+    public ArrayList<Pair<AdjacentListVertex<V>, Integer>> kruskal() {
+        UnionFind a = new UnionFind(vertex.size());
+        ArrayList<Pair<AdjacentListVertex<V>, Integer>> edges = new ArrayList<>();
+        for (AdjacentListVertex<V> u : vertex) {
+            for (Pair<AdjacentListVertex<V>, Integer> p : u.getAdjacentList()) {
+                AdjacentListVertex<V> v = p.getValue1();
+                int distance = p.getValue2();
+                edges.add(new Pair<>(u, distance));
+            }
+        }
+        edges.sort(Comparator.comparingInt(Pair::getValue2));
+        for (Pair<AdjacentListVertex<V>, Integer> p : edges) {
+            AdjacentListVertex<V> u = p.getValue1();
+            AdjacentListVertex<V> v = p.getValue1();
+            if (a.find(getIndex(u.getValue())) != a.find(getIndex(v.getValue()))) {
+                a.union(getIndex(u.getValue()), getIndex(v.getValue()));
+            }
+        }
+        return edges;
     }
 
     public ArrayList<AdjacentListVertex<V>> getVertex() {

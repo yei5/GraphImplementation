@@ -8,6 +8,8 @@ public class Vertex <V>{
     private int distance;
     private int time;
 
+    private Vertex<V> parent;
+
     public Vertex (V value){
         this.value = value;
         color = Color.WHITE;
@@ -43,5 +45,13 @@ public class Vertex <V>{
 
     public void setTime(int time) {
         this.time = time;
+    }
+
+    public Vertex<V> getParent() {
+        return parent;
+    }
+
+    public void setParent(Vertex<V> parent) {
+        this.parent = parent;
     }
 }

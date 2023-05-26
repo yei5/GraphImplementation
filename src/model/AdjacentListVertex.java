@@ -7,9 +7,6 @@ public class AdjacentListVertex <V> extends Vertex<V>{
 
     private ArrayList<Pair<AdjacentListVertex<V>,Integer>> adjacentList;
 
-
-    private AdjacentListVertex<V> parent;
-
     public AdjacentListVertex(V value){
         super(value);
         adjacentList = new ArrayList<>();
@@ -37,14 +34,6 @@ public class AdjacentListVertex <V> extends Vertex<V>{
         V value = dest.getValue();
         Pair<AdjacentListVertex<V>,Integer> p = new Pair<>(dest,weight);
         adjacentList.add(p);
-    }
-
-    public AdjacentListVertex<V> getParent() {
-        return parent;
-    }
-
-    public void setParent(AdjacentListVertex<V> parent) {
-        this.parent = parent;
     }
 
     public ArrayList< Pair<AdjacentListVertex<V>, Integer>> getAdjacentList() {
